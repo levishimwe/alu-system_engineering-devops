@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# The script to transfer the file from the local machine to the server
 
 # Check if the number of parameters is less than 4
 if [ "$#" -lt 4 ]; then
