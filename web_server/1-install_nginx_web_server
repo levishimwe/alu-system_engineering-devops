@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Update package list and install nginx with -y flag
+sudo apt-get update
+sudo apt-get install -y nginx
+
+# Create index.html with required content
+echo "Holberton School" > /var/www/html/index.html
+
+# Configure nginx to listen on port 80 (default)
+# This is typically default configuration, but we'll ensure it
+sed -i 's/listen 80 default_server;/listen 80 default_server;/' /etc/nginx/sites-available/default
+
+# Start nginx service
+# Using service command instead of systemctl as per requirements
+service nginx start
+
+# Ensure nginx is running
+service nginx status || service nginx restart
+
