@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 301 Configures Nginx server with a 301 redirect
+# 301 
 
 # Install nginx if not already installed
 sudo apt-get update
