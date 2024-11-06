@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
+# Configures Nginx server with a 301 redirect
 
 # Install nginx if not already installed
-
 sudo apt-get update
 sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
