@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Script that configures a new Ubuntu machine with the following requirements:
+
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+
+# Create index.html with required content
+echo "this is Levi from Holberton School" | sudo tee /var/www/html/index.html
+
+# Configure nginx with redirect
+printf %s "server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+    server_name _;
+    location /redirect_me {
+        return 301 https://www.tiktok.com/@junu.levi/photo/7421925573800267013
+    }
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
+}" > /etc/nginx/sites-available/default
+
+# Restart nginx to apply changes
+service nginx restart
