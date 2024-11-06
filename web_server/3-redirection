@@ -1,28 +1,15 @@
 #!/usr/bin/env bash
-# 301 
+# Configure nginx server with 301 redirect
 
 # Install nginx if not already installed
 sudo apt-get update
-sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
+sudo apt-get install -y nginx
 
 # Create index.html with required content
-echo "this is Levi from Holberton School" | sudo tee /var/www/html/index.html
+echo "Holberton School" | sudo tee /var/www/html/index.html
 
-# Configure nginx with redirect
-printf %s "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    root /var/www/html;
-    index index.html index.htm index.nginx-debian.html;
-    server_name _;
-    location /redirect_me {
-        return 301 https://www.tiktok.com/@junu.levi/photo/7421925573800267013
-    }
-    location / {
-        try_files \$uri \$uri/ =404;
-    }
-}" > /etc/nginx/sites-available/default
+# Configure redirect using sed
+sed -i '/server_name _;/a \    location /redirect_me {\n        return 301 https://www.tiktok.com/@junu.levi/photo/7421925573800267013?is_from_webapp=1&sender_device=pc&web_id=7421182616882382341;\n    }' /etc/nginx/sites-available/default
 
 # Restart nginx to apply changes
 service nginx restart
