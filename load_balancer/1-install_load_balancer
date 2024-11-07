@@ -16,8 +16,8 @@ frontend levi-frontend
         default_backend levi-backend
 backend levi-backend
         balance roundrobin
-        server 6242-web-01 44.220.158.41 check
-        server 6242-web-02 54.167.83.40 check
+        server 6302-web-01 44.220.158.41 check
+        server 6302-web-01 54.167.83.40 check
 "
 echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
 
