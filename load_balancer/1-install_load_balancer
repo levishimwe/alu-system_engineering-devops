@@ -14,7 +14,7 @@ frontend levi-frontend
         bind *:80
         mode http
         default_backend levi-backend
-backend gershom-backend
+backend levi-backend
         balance roundrobin
         server 6302-web-01 44.220.158.41:80 check
         server 6302-web-02 54.167.83.40:80 check
